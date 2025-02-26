@@ -1,7 +1,13 @@
+'use client'
+
 import Image from 'next/image'
 import styles from './page.module.css'
+// import { useCount } from '@/context'
+import { dataStore } from '@/store/dataStore'
 
 export default function Home() {
+  const { inc } = dataStore()
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -17,6 +23,7 @@ export default function Home() {
           priority
         />
       </main>
+      <button onClick={() => inc()} className='hover: cursor-pointer'>Count ++</button>
       <footer className={styles.footer}>
         <a
           href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"

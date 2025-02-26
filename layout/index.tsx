@@ -1,11 +1,18 @@
+"use client"
+
 import React from "react";
 import Link from "next/link";
+// import { useCount  } from "@/context";
+import { dataStore } from "@/store/dataStore";
 
 export default function MainLayout({
     children,
 }:{
     children: React.ReactNode
 }){
+
+    const { count } = dataStore() ?? { count: 0 }
+
     return(
         <>
         <div className='flex flex-col min-h-screen'>
@@ -27,6 +34,9 @@ export default function MainLayout({
             </header>
 
             <main className="flex-1 container mx-auto p-4">
+                <div>
+                    <p>{`Count : ${count}`}</p>
+                </div>
                 {children}
             </main>
 
